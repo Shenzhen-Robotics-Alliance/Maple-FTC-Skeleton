@@ -1,16 +1,15 @@
-package org.firstinspires.ftc.teamcode.subsystems;
+package org.firstinspires.ftc.teamcode.Subsystems;
 
 import com.arcrobotics.ftclib.command.SubsystemBase;
 import com.arcrobotics.ftclib.geometry.Pose2d;
 import com.arcrobotics.ftclib.hardware.GyroEx;
-import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.arcrobotics.ftclib.hardware.motors.MotorGroup;
 import com.arcrobotics.ftclib.hardware.motors.Motor.Encoder;
 import com.arcrobotics.ftclib.kinematics.wpilibkinematics.DifferentialDriveKinematics;
 import com.arcrobotics.ftclib.kinematics.wpilibkinematics.DifferentialDriveOdometry;
 import com.arcrobotics.ftclib.kinematics.wpilibkinematics.DifferentialDriveWheelSpeeds;
 
-import org.firstinspires.ftc.teamcode.DriveConstants;
+import org.firstinspires.ftc.teamcode.Constants;
 
 public class DriveSubsystem extends SubsystemBase {
 
@@ -33,7 +32,7 @@ public class DriveSubsystem extends SubsystemBase {
         this.gyro = gyro;
 
         odometry = new DifferentialDriveOdometry(gyro.getRotation2d(), initialPose);
-        kinematics = new DifferentialDriveKinematics(DriveConstants.TRACK_WIDTH);
+        kinematics = new DifferentialDriveKinematics(Constants.TRACK_WIDTH);
     }
 
     @Override
@@ -50,8 +49,8 @@ public class DriveSubsystem extends SubsystemBase {
     }
 
     public void drive(double leftVelocity, double rightVelocity) {
-        leftMotors.set(leftVelocity / DriveConstants.MAX_VELOCITY);
-        rightMotors.set(rightVelocity / DriveConstants.MAX_VELOCITY);
+        leftMotors.set(leftVelocity / Constants.MAX_VELOCITY);
+        rightMotors.set(rightVelocity / Constants.MAX_VELOCITY);
     }
 
 }

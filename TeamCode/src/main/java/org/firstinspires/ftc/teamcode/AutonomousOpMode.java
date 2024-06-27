@@ -15,7 +15,7 @@ import com.arcrobotics.ftclib.trajectory.TrajectoryConfig;
 import com.arcrobotics.ftclib.trajectory.TrajectoryGenerator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.subsystems.DriveSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.DriveSubsystem;
 
 import java.util.Arrays;
 
@@ -40,14 +40,14 @@ public class AutonomousOpMode extends CommandOpMode {
         driveSubsystem = new DriveSubsystem(
                 new MotorGroup(frontLeft, backLeft),
                 new MotorGroup(frontRight, backRight),
-                frontLeft.encoder.setDistancePerPulse(DriveConstants.DISTANCE_PER_PULSE),
-                frontRight.encoder.setDistancePerPulse(DriveConstants.DISTANCE_PER_PULSE),
+                frontLeft.encoder.setDistancePerPulse(Constants.DISTANCE_PER_PULSE),
+                frontRight.encoder.setDistancePerPulse(Constants.DISTANCE_PER_PULSE),
                 imu,
                 new Pose2d()
         );
 
-        DifferentialDriveKinematics kinematics = new DifferentialDriveKinematics(DriveConstants.TRACK_WIDTH);
-        TrajectoryConfig config = new TrajectoryConfig(DriveConstants.MAX_VELOCITY, DriveConstants.MAX_ACCELERATION)
+        DifferentialDriveKinematics kinematics = new DifferentialDriveKinematics(Constants.TRACK_WIDTH);
+        TrajectoryConfig config = new TrajectoryConfig(Constants.MAX_VELOCITY, Constants.MAX_ACCELERATION)
                 .setKinematics(kinematics);
 
         Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(
@@ -64,7 +64,7 @@ public class AutonomousOpMode extends CommandOpMode {
         ramseteFollower = new RamseteCommand(
                 exampleTrajectory,
                 driveSubsystem::getCurrentPose,
-                new RamseteController(DriveConstants.B, DriveConstants.ZETA),
+                new RamseteController(Constants.B, Constants.ZETA),
                 kinematics,
                 driveSubsystem::drive
         );
