@@ -8,9 +8,10 @@ import org.firstinspires.ftc.teamcode.UnitTests.WheelsSpeedTest;
 
 @TeleOp(name="Unit Test")
 public class UnitTestOpMode extends LinearOpMode {
-    private final UnitTest unitTest = new WheelsSpeedTest(hardwareMap, gamepad1, telemetry);
+    private UnitTest unitTest;
     @Override
     public void runOpMode() throws InterruptedException {
+        unitTest = new WheelsSpeedTest(hardwareMap, gamepad1, telemetry);
         unitTest.testStart();
 
         waitForStart();

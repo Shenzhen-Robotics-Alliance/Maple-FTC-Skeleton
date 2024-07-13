@@ -33,6 +33,8 @@ public class WheelsSpeedTest implements UnitTest {
         for (int i = 0; i < motors.length; i++) {
             motors[i].setPower(power);;
             telemetry.addData("motor" + i + " encoder velocity", motors[i].getVelocity());
+            telemetry.addData("motor" + i + " encoder position", motors[i].getCurrentPosition());
         }
+        telemetry.update();
     }
 }
